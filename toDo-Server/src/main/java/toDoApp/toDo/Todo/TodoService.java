@@ -1,16 +1,17 @@
 package toDoApp.toDo.Todo;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import jakarta.transaction.Transactional;
+
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class TodoService {
 
     private final TodoRepository todoRepository;
 
-    @Autowired
     public TodoService(TodoRepository todoRepository) {
         this.todoRepository = todoRepository;
     }
@@ -31,5 +32,23 @@ public class TodoService {
             );
         }
         todoRepository.deleteById(todoId);
+    }
+
+    @Transactional
+    public void updateTodo(Long todoId, String title, String description) {
+        
+        Todo todo = todoRepository.findById(todoId).orElseThrow(() -> new IllegalStateException(
+            "Item with Id: "+ todoId +" does not exists"
+        ));
+
+        if(title != null && title.length()>0 &&
+        !Objects.equals(todo.getTitle(), title)){
+            todo.setTitle(title);
+        }
+
+        if(description != null && description.length()>0 &&
+        !Objects.equals(todo.getDescription(), description)){
+            todo.setDescription(description);
+        }
     }
 }

@@ -14,6 +14,7 @@ public class TodoConfig {
     @Bean
     CommandLineRunner commandLineRunner(TodoRepository repository){
         return args -> {
+            if (repository.count() == 0){
             Todo todo01 = new Todo(
                     "todo 01",
                     "need to be done withing today",
@@ -33,6 +34,7 @@ public class TodoConfig {
             repository.saveAll(
                     List.of(todo01,todo02)
             );
+            }
         };
     }
 }
