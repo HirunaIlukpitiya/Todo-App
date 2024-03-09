@@ -7,7 +7,7 @@ This is a Spring server for the Todo-App project.
 - Maven
 
 ## Installation
-1. Clone the repository: `git clone https://github.com/your-username/Todo-App.git`
+1. Clone the repository: `https://github.com/HirunaIlukpitiya/Todo-App.git`
 2. Navigate to the server directory: `cd Todo-App/toDo-Server`
 3. Build the project: `mvn clean install`
 
