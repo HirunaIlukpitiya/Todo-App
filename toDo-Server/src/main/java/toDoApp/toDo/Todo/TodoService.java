@@ -7,6 +7,10 @@ import jakarta.transaction.Transactional;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * This class represents the service layer for managing Todo objects.
+ * It provides methods for retrieving, adding, updating, and deleting Todo items.
+ */
 @Service
 public class TodoService {
 

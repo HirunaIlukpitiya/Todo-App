@@ -8,6 +8,9 @@ import java.time.LocalDate;
 import java.time.Month;
 import java.util.List;
 
+/**
+ * Configuration class for the Todo application.
+ */
 @Configuration
 public class TodoConfig {
 
