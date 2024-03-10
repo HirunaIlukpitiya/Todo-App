@@ -55,4 +55,17 @@ public class TodoService {
             todo.setDescription(description);
         }
     }
+
+    public List<Todo> getTodosByCategory(String category) {
+        return todoRepository.findByCategory(category);
+    }
+
+    public void DeleteAll() {
+        if (todoRepository.count() != 0){
+        todoRepository.deleteAll();
+        System.out.println("All of the data in the database was deleted");
+        }else{
+            throw new IllegalStateException("Database is Already Empty");
+        }
+    }
 }

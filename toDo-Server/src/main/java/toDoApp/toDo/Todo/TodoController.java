@@ -5,6 +5,9 @@ import java.util.List;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
 
 /**
  * The TodoController class handles HTTP requests related to Todo operations.
@@ -67,5 +70,22 @@ public class TodoController {
             @RequestParam(required = false) String description) {
         todoService.updateTodo(todoId, title, description);
     }
+
+    /**
+        * Retrieves a list of todos based on the specified category.
+        *
+        * @param category the category to filter the todos by
+        * @return a list of todos that belong to the specified category
+        */
+    @GetMapping(path = "category/{category}")
+    public List<Todo> getTodosByCategory(@PathVariable("category") String category) {
+        return todoService.getTodosByCategory(category);
+    }
+
+    @DeleteMapping (path = "deleteAll")
+    public void DeleteAll(){
+        todoService.DeleteAll();
+    }
+    
 
 }
