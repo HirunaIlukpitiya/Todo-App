@@ -7,19 +7,19 @@ import java.util.List;
 
 @RequestMapping (path = "api/v1/User")
 @RestController
-public class UserController {
+public class TodoUserController {
 
 
-    private final UserService userService;
+    private final TodoUserService userService;
 
-    public UserController(UserService userService){
+    public TodoUserController(TodoUserService userService){
         this.userService = userService;
     }
 
     @GetMapping
-    public List<User> getUser() {
+    public List<TodoUser> getUser() {
         return userService.getUser();
     }
     
-    
+
 }

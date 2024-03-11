@@ -6,15 +6,15 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserService {
+public class TodoUserService {
 
-    private final UserRepository userRepository;
+    private final TodoUserRepository userRepository;
 
-    public UserService(UserRepository userRepository){
+    public TodoUserService(TodoUserRepository userRepository){
         this.userRepository = userRepository;
     }
 
-    public List<User> getUser() {
+    public List<TodoUser> getUser() {
         return userRepository.findAll();
     }
 

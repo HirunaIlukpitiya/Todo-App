@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 
 @Entity
 @Table
-public class User {
+public class TodoUser {
 
     @Id
     @SequenceGenerator(
@@ -24,14 +24,21 @@ public class User {
             generator = "user_sequence"
     )
     
-    private Long userId;
+    private Long id;
     private String firstName;
     private String lastName;
     private String email;
     private String password;
 
-    public User(Long userId, String firstName, String lastName, String email, String password) {
-        this.userId = userId;
+    public TodoUser(Long id, String firstName, String lastName, String email, String password) {
+        this.id = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.email = email;
+        this.password = password;
+    }
+
+    public TodoUser(String firstName, String lastName, String email, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
@@ -39,11 +46,11 @@ public class User {
     }
 
     public Long getUserId() {
-        return userId;
+        return id;
     }
     
-    public void setUserId(Long userId) {
-        this.userId = userId;
+    public void setUserId(Long id) {
+        this.id = id;
     }
 
     public String getFirstName() {
@@ -81,7 +88,7 @@ public class User {
     @Override
     public String toString() {
         return "User{" +
-                "userId=" + userId +
+                "userId=" + id +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +
