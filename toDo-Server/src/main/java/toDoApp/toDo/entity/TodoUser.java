@@ -1,4 +1,4 @@
-package toDoApp.toDo.User;
+package toDoApp.toDo.entity;
 
 
 import jakarta.persistence.Entity;
@@ -29,6 +29,9 @@ public class TodoUser {
     private String lastName;
     private String email;
     private String password;
+
+    public TodoUser() {
+    }
 
     public TodoUser(Long id, String firstName, String lastName, String email, String password) {
         this.id = id;

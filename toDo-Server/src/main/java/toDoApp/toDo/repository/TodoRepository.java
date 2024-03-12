@@ -1,7 +1,10 @@
-package toDoApp.toDo.Todo;
+package toDoApp.toDo.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+
+import toDoApp.toDo.entity.Todo;
+
 import java.util.List;
 
 /**

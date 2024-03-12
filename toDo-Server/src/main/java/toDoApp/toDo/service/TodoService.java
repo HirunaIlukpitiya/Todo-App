@@ -1,8 +1,10 @@
-package toDoApp.toDo.Todo;
+package toDoApp.toDo.service;
 
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
+import toDoApp.toDo.entity.Todo;
+import toDoApp.toDo.repository.TodoRepository;
 
 import java.util.List;
 import java.util.Objects;

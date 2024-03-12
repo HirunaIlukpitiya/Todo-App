@@ -1,8 +1,11 @@
-package toDoApp.toDo.Todo;
+package toDoApp.toDo.config;
 
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import toDoApp.toDo.entity.Todo;
+import toDoApp.toDo.repository.TodoRepository;
 
 import java.time.LocalDate;
 import java.time.Month;

@@ -1,4 +1,4 @@
-package toDoApp.toDo.Todo;
+package toDoApp.toDo.entity;
 
 import jakarta.persistence.*;
 
