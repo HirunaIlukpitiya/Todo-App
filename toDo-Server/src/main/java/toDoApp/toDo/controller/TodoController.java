@@ -16,7 +16,7 @@ import toDoApp.toDo.service.TodoService;
  * The TodoController class handles HTTP requests related to Todo operations.
  */
 @RestController
-@RequestMapping(path = "api/v1/Todo")
+@RequestMapping(path = "api/v1/todo")
 public class TodoController {
 
     private final TodoService todoService;

@@ -1,8 +1,10 @@
 package toDoApp.toDo.service;
 
+import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import toDoApp.toDo.entity.TodoUser;
@@ -11,31 +13,29 @@ import toDoApp.toDo.repository.TodoUserRepository;
 @Service
 public class TodoUserService {
 
-    private final PasswordEncoder passwordEncoder;
-    private final TodoUserRepository userRepository;
+    private final TodoUserRepository todoUserRepository;
 
-    public TodoUserService(TodoUserRepository userRepository, PasswordEncoder passwordEncoder) {
-        this.passwordEncoder = passwordEncoder;
-        this.userRepository = userRepository;
+    public TodoUserService(TodoUserRepository todoUserRepository) {
+        this.todoUserRepository = todoUserRepository;
+
     }
 
     public List<TodoUser> getUser() {
-        return userRepository.findAll();
+        return todoUserRepository.findAll();
     }
 
-    public void addUser(TodoUser todoUser) {
-        TodoUser userExists = userRepository.findByEmail(todoUser.getEmail());
-
-        if (userExists != null) {
-            throw new IllegalStateException("Email already exists");
-        } else if (todoUser.getFirstName().isEmpty() || todoUser.getLastName().isEmpty()
-                || todoUser.getEmail().isEmpty() || todoUser.getPassword().isEmpty()) {
-            throw new IllegalStateException("Please fill in all fields");
-        }
-
-        String encodedPassword = passwordEncoder.encode(todoUser.getPassword());
-        todoUser.setPassword(encodedPassword);
-        userRepository.save(todoUser);
+    public UserDetailsService userDetailsService() {
+        return new UserDetailsService() {
+            @Override
+            public UserDetails loadUserByUsername(String email) {
+                TodoUser todoUser = todoUserRepository.findByEmail(email);
+                return new org.springframework.security.core.userdetails.User(
+                        todoUser.getEmail(),
+                        todoUser.getPassword(),
+                        new ArrayList<>()
+                );
+            }
+        };
     }
 
 }
