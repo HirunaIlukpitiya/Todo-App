@@ -89,8 +89,10 @@ public class TodoController {
     public void DeleteAll(){
         todoService.DeleteAll();
     }
-
-
     
+    @DeleteMapping (path = "delete/{todoId}")
+    public void DeleteOne(@PathVariable("todoId") Long todoId){
+        todoService.deleteTodo(todoId);
+    }
 
 }

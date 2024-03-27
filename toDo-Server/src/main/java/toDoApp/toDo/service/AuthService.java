@@ -64,7 +64,7 @@ public class AuthService {
         var userDetails = new org.springframework.security.core.userdetails.User(user.getEmail(), user.getPassword(),
                 new ArrayList<>());
         var jwt = jwtService.generateToken(userDetails);
-        return JwtAuthenticationResponse.builder().token("Bearer " + String.valueOf(jwt)).build();
+        return JwtAuthenticationResponse.builder().token(String.valueOf(jwt)).build();
     }
 
 }

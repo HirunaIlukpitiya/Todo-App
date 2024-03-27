@@ -63,7 +63,7 @@ public class JwtService {
                 .signWith(getSigningKey(), SignatureAlgorithm.HS256).compact();
     }
 
-        private Key getSigningKey() {
+    private Key getSigningKey() {
         byte[] keyBytes = Decoders.BASE64.decode(jwtSigningKey);
         return Keys.hmacShaKeyFor(keyBytes);
     }
